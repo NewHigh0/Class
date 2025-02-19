@@ -150,6 +150,82 @@
         }
     }
 
+    class Airplane
+    {
+        private string name;
+        private string manufacturer;
+        private int yearOfManufacture;
+        private string type;
+        public Airplane()
+        {
+            name = "Unknown";
+            manufacturer = "Unknown";
+            yearOfManufacture = 0;
+            type = "Unknown";
+        }
+
+        public Airplane(string name, string manufacturer)
+        {
+            this.name = name;
+            this.manufacturer = manufacturer;
+            yearOfManufacture = 0;
+            type = "Unknown";
+        }
+
+        public Airplane(string name, string manufacturer, int year, string type)
+        {
+            this.name = name;
+            this.manufacturer = manufacturer;
+            this.yearOfManufacture = year;
+            this.type = type;
+        }
+        public void SetData(string name, string manufacturer)
+        {
+            this.name = name;
+            this.manufacturer = manufacturer;
+        }
+
+        public void SetData(string name, string manufacturer, int year)
+        {
+            SetData(name, manufacturer);
+            this.yearOfManufacture = year;
+        }
+
+        public void SetData(string name, string manufacturer, int year, string type)
+        {
+            SetData(name, manufacturer, year);
+            this.type = type;
+        }
+
+        public string GetName()
+        {
+            return name;
+        }
+
+        public string GetManufacturer()
+        {
+            return manufacturer;
+        }
+
+        public int GetYearOfManufacture()
+        {
+            return yearOfManufacture;
+        }
+
+        public string GetType()
+        {
+            return type;
+        }
+
+        public void DisplayInfo()
+        {
+            Console.WriteLine($"Aircraft Name: {name}");
+            Console.WriteLine($"Manufacturer: {manufacturer}");
+            Console.WriteLine($"Year of Manufacture: {yearOfManufacture}");
+            Console.WriteLine($"Type: {type}");
+        }
+    }
+
     internal class Program
     {
         static void Main(string[] args)
@@ -163,15 +239,33 @@
             //city.SetDistricts(new string[] { "Manhattan", "Brooklyn", "Queens" });
             //city.DisplayInfo();
 
-            Console.WriteLine("Employee Example:");
-            Employee employee = new Employee();
-            employee.SetFullName("John Smith");
-            employee.SetBirthDate(new DateTime(1990, 5, 15));
-            employee.SetPhoneNumber("+1-555-0123");
-            employee.SetWorkEmail("john.smith@company.com");
-            employee.SetPosition("Software Developer");
-            employee.SetJobDescription("Developing and maintaining software applications");
-            employee.DisplayInfo();
+            //Console.WriteLine("Employee Example:");
+            //Employee employee = new Employee();
+            //employee.SetFullName("John Smith");
+            //employee.SetBirthDate(new DateTime(1990, 5, 15));
+            //employee.SetPhoneNumber("+1-555-0123");
+            //employee.SetWorkEmail("john.smith@company.com");
+            //employee.SetPosition("Software Developer");
+            //employee.SetJobDescription("Developing and maintaining software applications");
+            //employee.DisplayInfo();
+
+            Console.WriteLine("Airplane Examples:");
+            Airplane airplane1 = new Airplane();
+            Airplane airplane2 = new Airplane("Boeing 747", "Boeing");
+            Airplane airplane3 = new Airplane("Airbus A380", "Airbus", 2020, "Commercial");
+
+            Console.WriteLine("Airplane 1 (Default Constructor):");
+            airplane1.DisplayInfo();
+
+            Console.WriteLine("\nAirplane 2 (Partial Constructor):");
+            airplane2.DisplayInfo();
+
+            Console.WriteLine("\nAirplane 3 (Full Constructor):");
+            airplane3.DisplayInfo();
+
+            Console.WriteLine("\nAirplane 1 (After SetData):");
+            airplane1.SetData("Cessna 172", "Cessna", 2022, "Private");
+            airplane1.DisplayInfo();
         }
     }
 }
